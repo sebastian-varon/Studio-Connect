@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const connectDB = require("../config/db");
 
-// Load environment variables
+// Environment variables
 dotenv.config();
 
 // Connect to MongoDB
@@ -15,10 +15,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// Sample Route
-app.get("/", (req, res) => {
-  res.send("Chat App API Running...");
-});
+// Routes
+app.use("/api/auth", require("../routes/authRoutes"));
 
 // Server Setup
 const PORT = process.env.PORT || 5000;
